@@ -1,0 +1,1 @@
+{"lc": 1, "type": "constructor", "id": ["langchain", "schema", "document", "Document"], "kwargs": {"metadata": {"source": "/root/autodl-tmp/Code/rag_demo/industry_pretrain_data/\u5b89\u5168\u751f\u4ea7\u7ba1\u7406\u4f53\u7cfb\u6587\u4ef6.txt"}, "page_content": "\u6599\u5e93\u6e05\u4ed3\u3001\u6e05\u5835\u4f5c\u4e1a\u7ba1\u7406\u5236\u5ea6", "type": "Document"}}

@@ -1,0 +1,1 @@
+{"lc": 1, "type": "constructor", "id": ["langchain", "schema", "document", "Document"], "kwargs": {"metadata": {"source": "/root/autodl-tmp/Code/rag_demo/industry_pretrain_data/GB_T 176-2017 \u6c34\u6ce5\u5316\u5b66\u5206\u6790\u65b9\u6cd5.txt"}, "page_content": "wIgn=wRec*100/(100-wLOI)\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026(64   )", "type": "Document"}}

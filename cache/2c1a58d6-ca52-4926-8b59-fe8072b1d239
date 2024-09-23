@@ -1,0 +1,1 @@
+{"lc": 1, "type": "constructor", "id": ["langchain", "schema", "document", "Document"], "kwargs": {"metadata": {"source": "/root/autodl-tmp/Code/rag_demo/industry_pretrain_data/SYH-40E.txt"}, "page_content": "1.4 Control parameter setting", "type": "Document"}}

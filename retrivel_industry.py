@@ -35,7 +35,7 @@ embeddings = HuggingFaceEmbeddings(
   encode_kwargs=embedding_encode_kwargs
 )
 
-reranker_args = {'model': '/root/autodl-tmp/Model/bce-reranker-base_v1', 'top_n': 3, 'device': 'cuda:0'}
+reranker_args = {'model': '/root/autodl-tmp/Model/bce-reranker-base_v1', 'top_n': 5, 'device': 'cuda:0'}
 reranker_model = BCERerank(**reranker_args)
 
 vector_store = FAISS.load_local(
@@ -77,20 +77,25 @@ template = """你是一名根据参考内容回答用户问题的机器人，你
 ##用户问题：
 {question}
 
-请根据已知内容，一步一步回答问题。
+请根据参考内容，回答用户问题，回答内容要简洁，说重点，不要做过多的解释，输出内容限制在200字符内。
 """
 
-file_path = "/root/autodl-tmp/Code/LLaMA-Factory/data/QA_test.json"
+# file_path = "/root/autodl-tmp/Code/LLaMA-Factory/data/QA_test.json"
 # file_path = "/root/autodl-tmp/Code/LLaMA-Factory/data/QA_merged_clean_update.json"
+file_path = "./test_data/rag_qa_test.jsonl"
 query_list = []
 label_list = []
 data = []
 with open(file_path, 'r', encoding="utf-8") as f:
-    data = json.load(f)
+    # data = json.load(f)
+    for line in f:
+        data.append(json.loads(line))
 
 for it in data:
-    query_list.append(it["instruction"])
-    label_list.append(it["output"])
+    # query_list.append(it["instruction"])
+    # label_list.append(it["output"])
+    query_list.append(it["query"])
+    label_list.append(it["answer"])
 
 pred_list = []
 for i, query in tqdm(enumerate(query_list), total=len(query_list), desc="Processing"):
@@ -100,13 +105,13 @@ for i, query in tqdm(enumerate(query_list), total=len(query_list), desc="Process
     prompt = template.format(context=context, question=query)
     result = llm.invoke(prompt)
     pred = result.content
-    with open("out2.log", "a", encoding="utf-8") as f:
+    with open("rag_qa_test2.log", "a", encoding="utf-8") as f:
         f.write(prompt)
         f.write("======================================\n")
         f.write(pred + "\n")
         f.write("======================================\n")
     pred_list.append(pred)
-    with open("./llm_ans_temp_0_max_chunk600_rerank.jsonl", "a", encoding="utf-8") as f:
+    with open("./llm_ans_rag_qa_top5.jsonl", "a", encoding="utf-8") as f:
         res = {"instruction": query_list[i], "label": label_list[i], "pred": pred}
         f.write(json.dumps(res, ensure_ascii=False) + "\n")
 

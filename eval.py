@@ -12,7 +12,7 @@ import numpy as np
 
 data = []
 # with open("./llm_ans_temp_0_max_chunk600.jsonl", "r", encoding="utf-8") as f:
-with open("./llm_ans_temp_0_max_chunk600_rerank.jsonl", "r", encoding="utf-8") as f:
+with open("./llm_ans_rag_qa.jsonl", "r", encoding="utf-8") as f:
     for line in f:
         data.append(json.loads(line))
 

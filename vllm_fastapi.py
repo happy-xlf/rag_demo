@@ -17,7 +17,7 @@ llm = LLM(
     tensor_parallel_size=1,
     trust_remote_code=True,
     max_model_len=4096,
-    gpu_memory_utilization=0.8
+    gpu_memory_utilization=0.5
 )
 
 tokenizer = llm.get_tokenizer()

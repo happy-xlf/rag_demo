@@ -23,6 +23,3 @@ python vector_save.py
 python retrival_industry.py
 python eval.py
 ```
-
-## 效果展示
-![](images/industry.png)

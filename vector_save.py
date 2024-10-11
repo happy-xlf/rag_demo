@@ -5,19 +5,14 @@
 # @Author    :Lifeng
 # @Description :
 from langchain.retrievers import ParentDocumentRetriever
-from langchain.storage import InMemoryStore
 import faiss
 from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.docstore.in_memory import InMemoryDocstore
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain.embeddings import HuggingFaceBgeEmbeddings
 from langchain_community.docstore.in_memory import InMemoryDocstore
-import json
-from langchain_openai import ChatOpenAI
 import os
-from tqdm import tqdm
 from langchain.storage import LocalFileStore
 from langchain.storage._lc_store import create_kv_docstore
 
@@ -78,7 +73,7 @@ for loader in loaders:
 retriever.add_documents(docs)
 
 vector_store.save_local("faiss_industry")
-# print("加载完成...")
+print("保存成功...")
 
 
 

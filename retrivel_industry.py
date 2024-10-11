@@ -5,14 +5,9 @@
 # @Author    :Lifeng
 # @Description :
 from langchain.retrievers import ParentDocumentRetriever
-from langchain.storage import InMemoryStore
-import faiss
-from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.docstore.in_memory import InMemoryDocstore
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_community.docstore.in_memory import InMemoryDocstore
 import os
 import json
 from langchain_openai import ChatOpenAI
